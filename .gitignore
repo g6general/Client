@@ -4,6 +4,7 @@
 [Bb]uild/
 Logs/
 Packages/
+Plugins/
 Assets/AssetStoreTools*
 
 .DS_Store
