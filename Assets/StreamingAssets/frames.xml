@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<board>
+	<level number="1">
+		<position x="0" y="0" type="frame"/>
+		<position x="1" y="0" type="frame"/>
+		<position x="2" y="0" type="chain"/>
+		<position x="3" y="0" type="chain"/>
+		<position x="4" y="0" type="chain"/>
+		<position x="5" y="0" type="frame"/>
+		<position x="6" y="0" type="frame"/>
+		<position x="0" y="1" type="frame"/>
+		<position x="1" y="1" type="frame"/>
+		<position x="2" y="1" type="chain"/>
+		<position x="3" y="1" type="chain"/>
+		<position x="4" y="1" type="chain"/>
+		<position x="5" y="1" type="frame"/>
+		<position x="6" y="1" type="frame"/>
+	</level>
+	<level number="2">
+		<position x="2" y="2" type="chain"/>
+		<position x="2" y="3" type="chain"/>
+		<position x="2" y="4" type="chain"/>
+		<position x="3" y="2" type="chain"/>
+		<position x="3" y="3" type="chain"/>
+		<position x="3" y="4" type="chain"/>
+		<position x="4" y="2" type="chain"/>
+		<position x="4" y="3" type="chain"/>
+		<position x="4" y="4" type="chain"/>
+		<position x="1" y="1" type="frame"/>
+		<position x="1" y="2" type="frame"/>
+		<position x="1" y="3" type="frame"/>
+		<position x="1" y="4" type="frame"/>
+		<position x="1" y="5" type="frame"/>
+		<position x="2" y="1" type="frame"/>
+		<position x="3" y="1" type="frame"/>
+		<position x="4" y="1" type="frame"/>
+		<position x="2" y="5" type="frame"/>
+		<position x="3" y="5" type="frame"/>
+		<position x="4" y="5" type="frame"/>
+		<position x="5" y="1" type="frame"/>
+		<position x="5" y="2" type="frame"/>
+		<position x="5" y="3" type="frame"/>
+		<position x="5" y="4" type="frame"/>
+		<position x="5" y="5" type="frame"/>
+
+	</level>
+	<level number="3">
+		<position x="0" y="0" type="chain"/>
+		<position x="1" y="0" type="chain"/>
+		<position x="2" y="0" type="chain"/>
+		<position x="3" y="0" type="chain"/>
+		<position x="4" y="0" type="chain"/>
+		<position x="5" y="0" type="chain"/>
+		<position x="6" y="0" type="chain"/>
+		<position x="0" y="1" type="chain"/>
+		<position x="1" y="1" type="chain"/>
+		<position x="2" y="1" type="chain"/>
+		<position x="3" y="1" type="chain"/>
+		<position x="4" y="1" type="chain"/>
+		<position x="5" y="1" type="chain"/>
+		<position x="6" y="1" type="chain"/>
+		<position x="0" y="2" type="frame"/>
+		<position x="1" y="2" type="frame"/>
+		<position x="2" y="2" type="frame"/>
+		<position x="3" y="2" type="frame"/>
+		<position x="4" y="2" type="frame"/>
+		<position x="5" y="2" type="frame"/>
+		<position x="6" y="2" type="frame"/>
+		<position x="0" y="3" type="frame"/>
+		<position x="1" y="3" type="frame"/>
+		<position x="2" y="3" type="frame"/>
+		<position x="3" y="3" type="frame"/>
+		<position x="4" y="3" type="frame"/>
+		<position x="5" y="3" type="frame"/>
+		<position x="6" y="3" type="frame"/>
+	</level>
+	<level number="4">
+		<position x="0" y="0" type="frame"/>
+        <position x="1" y="0" type="frame"/>
+        <position x="2" y="0" type="chain"/>
+        <position x="3" y="0" type="chain"/>
+        <position x="4" y="0" type="chain"/>
+        <position x="5" y="0" type="chain"/>
+        <position x="6" y="0" type="chain"/>
+        <position x="0" y="1" type="frame"/>
+        <position x="1" y="1" type="chain"/>
+        <position x="2" y="1" type="frame"/>
+        <position x="3" y="1" type="chain"/>
+        <position x="4" y="1" type="chain"/>
+        <position x="5" y="1" type="chain"/>
+        <position x="6" y="1" type="frame"/>
+        <position x="0" y="2" type="frame"/>
+        <position x="1" y="2" type="chain"/>
+        <position x="2" y="2" type="frame"/>
+        <position x="3" y="2" type="frame"/>
+        <position x="4" y="2" type="chain"/>
+        <position x="5" y="2" type="chain"/>
+        <position x="6" y="2" type="chain"/>
+        <position x="0" y="3" type="frame"/>
+        <position x="1" y="3" type="chain"/>
+        <position x="2" y="3" type="chain"/>
+        <position x="3" y="3" type="frame"/>
+        <position x="4" y="3" type="chain"/>
+        <position x="5" y="3" type="chain"/>
+        <position x="6" y="3" type="frame"/>
+        <position x="0" y="4" type="frame"/>
+        <position x="1" y="4" type="chain"/>
+        <position x="2" y="4" type="chain"/>
+        <position x="3" y="4" type="frame"/>
+        <position x="4" y="4" type="chain"/>
+        <position x="5" y="4" type="frame"/>
+        <position x="6" y="4" type="frame"/>
+        <position x="0" y="5" type="frame"/>
+        <position x="1" y="5" type="chain"/>
+        <position x="2" y="5" type="frame"/>
+        <position x="3" y="5" type="chain"/>
+        <position x="4" y="5" type="frame"/>
+        <position x="5" y="5" type="frame"/>
+        <position x="6" y="5" type="frame"/>
+        <position x="0" y="6" type="frame"/>
+        <position x="1" y="6" type="chain"/>
+        <position x="2" y="6" type="frame"/>
+        <position x="3" y="6" type="chain"/>
+        <position x="4" y="6" type="frame"/>
+        <position x="5" y="6" type="frame"/>
+        <position x="6" y="6" type="frame"/>
+	</level>
+	<level number="5">
+		<position x="1" y="4" type="chain"/>
+		<position x="2" y="4" type="chain"/>
+		<position x="3" y="4" type="chain"/>
+		<position x="4" y="4" type="chain"/>
+		<position x="5" y="4" type="chain"/>
+	</level>
+</board>
