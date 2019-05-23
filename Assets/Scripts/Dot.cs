@@ -11,7 +11,7 @@ public class Dot : MonoBehaviour
     private float mMoveVelocity;
     private float mFallVelocity;
 
-    private GeometryPoint mTargetPos;
+    private M3Position mTargetPos;
     private M3Settings.eState mState;
 
     public delegate void Handler();
@@ -26,7 +26,7 @@ public class Dot : MonoBehaviour
         mFallVelocity = 0.3f;
 
         mState = M3Settings.eState.WAITING;
-        mTargetPos = new GeometryPoint();
+        mTargetPos = new M3Position();
     }
 
     void Update()
@@ -49,7 +49,7 @@ public class Dot : MonoBehaviour
                 {
                     //directly set position
                     transform.position = targetPos;
-                    mBoard.mFigures[mTargetPos.I(), mTargetPos.J()] = gameObject;
+                    mBoard.mFigures[mTargetPos.X(), mTargetPos.Y()] = gameObject;
 
                     ResetTargetPosition();
                     mState = M3Settings.eState.WAITING;
@@ -69,7 +69,7 @@ public class Dot : MonoBehaviour
                 {
                     //directly set position 
                     transform.position = targetPos;
-                    mBoard.mFigures[mTargetPos.I(), mTargetPos.J()] = gameObject;
+                    mBoard.mFigures[mTargetPos.X(), mTargetPos.Y()] = gameObject;
 
                     ResetTargetPosition();
                     mState = M3Settings.eState.WAITING;
@@ -92,7 +92,7 @@ public class Dot : MonoBehaviour
             {
                 //directly set position
                 transform.position = targetPos;
-                mBoard.mFigures[mTargetPos.I(), mTargetPos.J()] = gameObject;
+                mBoard.mFigures[mTargetPos.X(), mTargetPos.Y()] = gameObject;
 
                 ResetTargetPosition();
                 mState = M3Settings.eState.WAITING;
@@ -125,8 +125,8 @@ public class Dot : MonoBehaviour
     {
         if (!mBoard.IsGameCompleted())
         {
-            var currentX = (int)((transform.position.x - GeometryPoint.mOffsetX) / GeometryPoint.mScaleX); //(int) transform.position.x;
-            var currentY = (int)((transform.position.y - GeometryPoint.mOffsetY) / GeometryPoint.mScaleY); //(int) transform.position.y;
+            var currentX = (int) transform.position.x;
+            var currentY = (int) transform.position.y;
 
             if (mBoard.IsSecondTouch())
             {
