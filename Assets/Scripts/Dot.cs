@@ -11,7 +11,7 @@ public class Dot : MonoBehaviour
     private float mMoveVelocity;
     private float mFallVelocity;
 
-    private M3Position mTargetPos;
+    private GeometryPoint mTargetPos;
     private M3Settings.eState mState;
 
     public delegate void Handler();
@@ -26,7 +26,7 @@ public class Dot : MonoBehaviour
         mFallVelocity = 0.3f;
 
         mState = M3Settings.eState.WAITING;
-        mTargetPos = new M3Position();
+        mTargetPos = new GeometryPoint();
     }
 
     void Update()
@@ -36,11 +36,11 @@ public class Dot : MonoBehaviour
 
         if (M3Settings.eState.MOVE == mState)
         {
-            Vector2 targetPos = new Vector2((float) mTargetPos.X(), (float) mTargetPos.Y());
+            Vector2 targetPos = new Vector2(mTargetPos.X(), mTargetPos.Y());
 
             if (transform.position.x == mTargetPos.X()) //vertical
             {
-                if (Mathf.Abs((float) mTargetPos.Y() - transform.position.y) > mEpsilon)
+                if (Mathf.Abs(mTargetPos.Y() - transform.position.y) > mEpsilon)
                 {
                     //move towards the target
                     transform.position = Vector2.Lerp(transform.position, targetPos, mMoveVelocity);
@@ -49,7 +49,7 @@ public class Dot : MonoBehaviour
                 {
                     //directly set position
                     transform.position = targetPos;
-                    mBoard.mFigures[mTargetPos.X(), mTargetPos.Y()] = this.gameObject;
+                    mBoard.mFigures[mTargetPos.I(), mTargetPos.J()] = gameObject;
 
                     ResetTargetPosition();
                     mState = M3Settings.eState.WAITING;
@@ -60,7 +60,7 @@ public class Dot : MonoBehaviour
             }
             else if (transform.position.y == mTargetPos.Y()) //horizontal
             {
-                if (Mathf.Abs((float) mTargetPos.X() - transform.position.x) > mEpsilon)
+                if (Mathf.Abs(mTargetPos.X() - transform.position.x) > mEpsilon)
                 {
                     //move towards the target
                     transform.position = Vector2.Lerp(transform.position, targetPos, mMoveVelocity);
@@ -69,7 +69,7 @@ public class Dot : MonoBehaviour
                 {
                     //directly set position 
                     transform.position = targetPos;
-                    mBoard.mFigures[mTargetPos.X(), mTargetPos.Y()] = this.gameObject;
+                    mBoard.mFigures[mTargetPos.I(), mTargetPos.J()] = gameObject;
 
                     ResetTargetPosition();
                     mState = M3Settings.eState.WAITING;
@@ -81,9 +81,9 @@ public class Dot : MonoBehaviour
         }
         else if (M3Settings.eState.FALL == mState)
         {
-            Vector2 targetPos = new Vector2((float) mTargetPos.X(), (float) mTargetPos.Y());
+            Vector2 targetPos = new Vector2(mTargetPos.X(), mTargetPos.Y());
             
-            if (Mathf.Abs((float) mTargetPos.Y() - transform.position.y) > mEpsilon)
+            if (Mathf.Abs(mTargetPos.Y() - transform.position.y) > mEpsilon)
             {
                 //move towards the target
                 transform.position = Vector2.Lerp(transform.position, targetPos, mFallVelocity);
@@ -92,7 +92,7 @@ public class Dot : MonoBehaviour
             {
                 //directly set position
                 transform.position = targetPos;
-                mBoard.mFigures[mTargetPos.X(), mTargetPos.Y()] = this.gameObject;
+                mBoard.mFigures[mTargetPos.I(), mTargetPos.J()] = gameObject;
 
                 ResetTargetPosition();
                 mState = M3Settings.eState.WAITING;
@@ -125,8 +125,8 @@ public class Dot : MonoBehaviour
     {
         if (!mBoard.IsGameCompleted())
         {
-            int currentX = (int) transform.position.x;
-            int currentY = (int) transform.position.y;
+            var currentX = (int)((transform.position.x - GeometryPoint.mOffsetX) / GeometryPoint.mScaleX); //(int) transform.position.x;
+            var currentY = (int)((transform.position.y - GeometryPoint.mOffsetY) / GeometryPoint.mScaleY); //(int) transform.position.y;
 
             if (mBoard.IsSecondTouch())
             {

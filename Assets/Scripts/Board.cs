@@ -148,7 +148,9 @@ public class Board : MonoBehaviour
         }
         
         GameObject prefab = mPrefabs[index];
-        Vector2 position = new Vector2((float) pos.X(), (float) pos.Y());
+
+        var point = new GeometryPoint(pos);
+        Vector2 position = new Vector2((float) point.X(), (float) point.Y());
         
         GameObject figure = Instantiate(prefab, position, Quaternion.identity);
         figure.name = "Figure";
@@ -173,7 +175,8 @@ public class Board : MonoBehaviour
         if (state == M3Cell.eState.NONE || state == M3Cell.eState.FREE)
             return;
 
-        Vector2 position = new Vector2(pos.X(), pos.Y());
+        var point = new GeometryPoint(pos);
+        Vector2 position = new Vector2(point.X(), point.Y());
         
         int index = 10;
         GameObject prefab = mPrefabs[index];
@@ -231,5 +234,40 @@ public class Board : MonoBehaviour
     public bool IsSecondTouch()
     {
         return (mFirstTouchPos.X() != -1 && mFirstTouchPos.Y() != -1);
+    }
+}
+
+public class GeometryPoint
+{
+    public static float mOffsetX = 0.05f;
+    public static float mOffsetY = 0.03f;
+
+    public static float mScaleX = 0.8f;
+    public static float mScaleY = 0.72f;
+
+    private int mIndexX;
+    private int mIndexY;
+
+    public GeometryPoint()
+    {
+        mIndexX = -1;
+        mIndexY = -1;
+    }
+    public GeometryPoint(M3Position pos)
+    {
+        mIndexX = pos.X();
+        mIndexY = pos.Y();
+    }
+
+    public float X() { return mOffsetX + mScaleX * mIndexX; }
+    public float Y() { return mOffsetY + mScaleY * mIndexY; }
+    public int I() { return mIndexX; }
+    public int J() { return mIndexY; }
+    public void SetX(int x) { mIndexX = x; }
+    public void SetY(int y) { mIndexY = y; }
+
+    public bool IsExist()
+    {
+        return (mIndexX != -1 && mIndexY != -1);
     }
 }
