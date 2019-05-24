@@ -36,14 +36,14 @@ public class Dot : MonoBehaviour
 
         if (M3Settings.eState.MOVE == mState)
         {
-            Vector2 targetPos = new Vector2(mTargetPos.X(), mTargetPos.Y());
+            Vector3 targetPos = new Vector3(mTargetPos.X(), mTargetPos.Y(), mBoard.mFigurePosZ);
 
             if (transform.position.x == mTargetPos.X()) //vertical
             {
                 if (Mathf.Abs(mTargetPos.Y() - transform.position.y) > mEpsilon)
                 {
                     //move towards the target
-                    transform.position = Vector2.Lerp(transform.position, targetPos, mMoveVelocity);
+                    transform.position = Vector3.Lerp(transform.position, targetPos, mMoveVelocity);
                 }
                 else
                 {
@@ -63,7 +63,7 @@ public class Dot : MonoBehaviour
                 if (Mathf.Abs(mTargetPos.X() - transform.position.x) > mEpsilon)
                 {
                     //move towards the target
-                    transform.position = Vector2.Lerp(transform.position, targetPos, mMoveVelocity);
+                    transform.position = Vector3.Lerp(transform.position, targetPos, mMoveVelocity);
                 }
                 else
                 {
@@ -81,12 +81,12 @@ public class Dot : MonoBehaviour
         }
         else if (M3Settings.eState.FALL == mState)
         {
-            Vector2 targetPos = new Vector2(mTargetPos.X(), mTargetPos.Y());
+            Vector3 targetPos = new Vector3(mTargetPos.X(), mTargetPos.Y(), mBoard.mFigurePosZ);
             
             if (Mathf.Abs(mTargetPos.Y() - transform.position.y) > mEpsilon)
             {
                 //move towards the target
-                transform.position = Vector2.Lerp(transform.position, targetPos, mFallVelocity);
+                transform.position = Vector3.Lerp(transform.position, targetPos, mFallVelocity);
             }
             else
             {

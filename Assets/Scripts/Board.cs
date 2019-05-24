@@ -23,6 +23,9 @@ public class Board : MonoBehaviour
     public M3Engine mEngine;
 
     private bool mGameCompleted;
+
+    public float mFigurePosZ = -5f;
+    private float mFramePosZ = -2f;
     
     public struct Frame
     {
@@ -148,7 +151,7 @@ public class Board : MonoBehaviour
         }
         
         GameObject prefab = mPrefabs[index];
-        Vector2 position = new Vector2((float) pos.X(), (float) pos.Y());
+        Vector3 position = new Vector3((float) pos.X(), (float) pos.Y(), mFigurePosZ);
         
         GameObject figure = Instantiate(prefab, position, Quaternion.identity);
         figure.name = "Figure";
@@ -173,7 +176,7 @@ public class Board : MonoBehaviour
         if (state == M3Cell.eState.NONE || state == M3Cell.eState.FREE)
             return;
 
-        Vector2 position = new Vector2(pos.X(), pos.Y());
+        Vector3 position = new Vector3(pos.X(), pos.Y(), mFramePosZ);
 
         int index = 10;
         GameObject prefab = mPrefabs[index];
