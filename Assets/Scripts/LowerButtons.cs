@@ -16,32 +16,14 @@ public class LowerButtons : MonoBehaviour
 
     void Start()
     {
-        GameObject.Find("top_num_text_1").GetComponent<Text>().enabled = false;
-        GameObject.Find("top_nick_text_1").GetComponent<Text>().enabled = false;
-        GameObject.Find("top_record_text_1").GetComponent<Text>().enabled = false;
-        GameObject.Find("top_num_text_2").GetComponent<Text>().enabled = false;
-        GameObject.Find("top_nick_text_2").GetComponent<Text>().enabled = false;
-        GameObject.Find("top_record_text_2").GetComponent<Text>().enabled = false;
-        GameObject.Find("top_num_text_3").GetComponent<Text>().enabled = false;
-        GameObject.Find("top_nick_text_3").GetComponent<Text>().enabled = false;
-        GameObject.Find("top_record_text_3").GetComponent<Text>().enabled = false;
-        GameObject.Find("top_num_text_3").GetComponent<Text>().enabled = false;
-        GameObject.Find("top_nick_text_3").GetComponent<Text>().enabled = false;
-        GameObject.Find("top_record_text_3").GetComponent<Text>().enabled = false;
-        GameObject.Find("top_num_text_4").GetComponent<Text>().enabled = false;
-        GameObject.Find("top_nick_text_4").GetComponent<Text>().enabled = false;
-        GameObject.Find("top_record_text_4").GetComponent<Text>().enabled = false;
-        GameObject.Find("top_num_text_5").GetComponent<Text>().enabled = false;
-        GameObject.Find("top_nick_text_5").GetComponent<Text>().enabled = false;
-        GameObject.Find("top_record_text_5").GetComponent<Text>().enabled = false;
-        GameObject.Find("top_num_text_you").GetComponent<Text>().enabled = false;
-        GameObject.Find("top_nick_text_you").GetComponent<Text>().enabled = false;
-        GameObject.Find("top_record_text_you").GetComponent<Text>().enabled = false;
+        GameObject.Find("canvas_top").GetComponent<Canvas>().enabled = false;
+        GameObject.Find("canvas_shop").GetComponent<Canvas>().enabled = false;
     }
 
     public void OnButtonPress(int n)
     {
         ListTopInfo(n == 0);
+        ListShopInfo(n == 2);
 
         if (mCameraMoving != null)
             StopCoroutine(mCameraMoving);
@@ -54,53 +36,17 @@ public class LowerButtons : MonoBehaviour
     private void ListTopInfo(bool mode)
     {
         if (mode)
-        {
-            GameObject.Find("top_num_text_1").GetComponent<Text>().enabled = true;
-            GameObject.Find("top_nick_text_1").GetComponent<Text>().enabled = true;
-            GameObject.Find("top_record_text_1").GetComponent<Text>().enabled = true;
-            GameObject.Find("top_num_text_2").GetComponent<Text>().enabled = true;
-            GameObject.Find("top_nick_text_2").GetComponent<Text>().enabled = true;
-            GameObject.Find("top_record_text_2").GetComponent<Text>().enabled = true;
-            GameObject.Find("top_num_text_3").GetComponent<Text>().enabled = true;
-            GameObject.Find("top_nick_text_3").GetComponent<Text>().enabled = true;
-            GameObject.Find("top_record_text_3").GetComponent<Text>().enabled = true;
-            GameObject.Find("top_num_text_3").GetComponent<Text>().enabled = true;
-            GameObject.Find("top_nick_text_3").GetComponent<Text>().enabled = true;
-            GameObject.Find("top_record_text_3").GetComponent<Text>().enabled = true;
-            GameObject.Find("top_num_text_4").GetComponent<Text>().enabled = true;
-            GameObject.Find("top_nick_text_4").GetComponent<Text>().enabled = true;
-            GameObject.Find("top_record_text_4").GetComponent<Text>().enabled = true;
-            GameObject.Find("top_num_text_5").GetComponent<Text>().enabled = true;
-            GameObject.Find("top_nick_text_5").GetComponent<Text>().enabled = true;
-            GameObject.Find("top_record_text_5").GetComponent<Text>().enabled = true;
-            GameObject.Find("top_num_text_you").GetComponent<Text>().enabled = true;
-            GameObject.Find("top_nick_text_you").GetComponent<Text>().enabled = true;
-            GameObject.Find("top_record_text_you").GetComponent<Text>().enabled = true;
-        }
+            GameObject.Find("canvas_top").GetComponent<Canvas>().enabled = true;
         else
-        {
-            GameObject.Find("top_num_text_1").GetComponent<Text>().enabled = false;
-            GameObject.Find("top_nick_text_1").GetComponent<Text>().enabled = false;
-            GameObject.Find("top_record_text_1").GetComponent<Text>().enabled = false;
-            GameObject.Find("top_num_text_2").GetComponent<Text>().enabled = false;
-            GameObject.Find("top_nick_text_2").GetComponent<Text>().enabled = false;
-            GameObject.Find("top_record_text_2").GetComponent<Text>().enabled = false;
-            GameObject.Find("top_num_text_3").GetComponent<Text>().enabled = false;
-            GameObject.Find("top_nick_text_3").GetComponent<Text>().enabled = false;
-            GameObject.Find("top_record_text_3").GetComponent<Text>().enabled = false;
-            GameObject.Find("top_num_text_3").GetComponent<Text>().enabled = false;
-            GameObject.Find("top_nick_text_3").GetComponent<Text>().enabled = false;
-            GameObject.Find("top_record_text_3").GetComponent<Text>().enabled = false;
-            GameObject.Find("top_num_text_4").GetComponent<Text>().enabled = false;
-            GameObject.Find("top_nick_text_4").GetComponent<Text>().enabled = false;
-            GameObject.Find("top_record_text_4").GetComponent<Text>().enabled = false;
-            GameObject.Find("top_num_text_5").GetComponent<Text>().enabled = false;
-            GameObject.Find("top_nick_text_5").GetComponent<Text>().enabled = false;
-            GameObject.Find("top_record_text_5").GetComponent<Text>().enabled = false;
-            GameObject.Find("top_num_text_you").GetComponent<Text>().enabled = false;
-            GameObject.Find("top_nick_text_you").GetComponent<Text>().enabled = false;
-            GameObject.Find("top_record_text_you").GetComponent<Text>().enabled = false;
-        }
+            GameObject.Find("canvas_top").GetComponent<Canvas>().enabled = false;
+    }
+    
+    private void ListShopInfo(bool mode)
+    {
+        if (mode)
+            GameObject.Find("canvas_shop").GetComponent<Canvas>().enabled = true;
+        else
+            GameObject.Find("canvas_shop").GetComponent<Canvas>().enabled = false;
     }
 
     IEnumerator CameraMoving(int n)
