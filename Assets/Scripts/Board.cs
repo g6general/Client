@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using Match3Engine;
+using UnityEditor;
+using UnityEngine.UI;
 
 public class Board : MonoBehaviour
 {
@@ -47,6 +49,20 @@ public class Board : MonoBehaviour
         
         Init();
         mEngine.StartGame(mCurrentLevel);
+        
+        //TEST//
+        //var sw = Screen.width;
+        //var size = mCamera.orthographicSize;
+        //var trans = GameObject.Find("Board").GetComponent<RectTransform>();
+        //var w = trans.sizeDelta;
+
+        //
+        //float screenHeightInUnits = mCamera.orthographicSize * 2;
+        //float screenWidthInUnits = screenHeightInUnits * Screen.width / Screen.height;
+        //
+        
+        //bool check = true;
+        //TEST//
     }
 
     void Update()
