@@ -49,33 +49,14 @@ public class Board : MonoBehaviour
         
         Init();
         mEngine.StartGame(mCurrentLevel);
-        
-        //TEST//
-        //var sw = Screen.width;
-        //var size = mCamera.orthographicSize;
-        //var trans = GameObject.Find("Board").GetComponent<RectTransform>();
-        //var w = trans.sizeDelta;
 
-        //
-        //float screenHeightInUnits = mCamera.orthographicSize * 2;
-        //float screenWidthInUnits = screenHeightInUnits * Screen.width / Screen.height;
-        //
-        
-        //bool check = true;
-        //TEST//
+        float magicNumber = 7.39f;
+        mCamera.orthographicSize = (magicNumber * Screen.height) / (2 * Screen.width);
     }
 
     void Update()
     {
         mEngine.GameProcess();
-/*
-#if !UNITY_EDITOR
-        if (Screen.orientation == ScreenOrientation.Portrait)
-            mCamera.orthographicSize = 7f;
-        else if (Screen.orientation == ScreenOrientation.Landscape)
-            mCamera.orthographicSize = 3.7f;
-#endif
-*/
     }
 
     private void Init()
@@ -86,14 +67,6 @@ public class Board : MonoBehaviour
         mNumberOfLevels = 5;
         mFigures = new GameObject[mWidth, mHeight];
         mFrames = new List<Frame>();
-        /*
-        Vector3 position = new Vector3(3.0f, 3.0f, -1f);
-        mCamera.transform.SetPositionAndRotation(position, Quaternion.identity);
-        
-        #if UNITY_EDITOR
-            mCamera.orthographicSize = 3.7f;
-        #endif
-        */
         mGameCompleted = false;
 
         mEngine = new M3Engine(mWidth, mHeight);
