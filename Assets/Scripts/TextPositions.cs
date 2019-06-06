@@ -122,5 +122,42 @@ public class TextPositions : MonoBehaviour
         
         s22Top.position = new Vector3(Screen.width * sCoefX2, Screen.height * sCoefY2, s22Top.position.z);
         s22Bottom.position = new Vector3(Screen.width * sCoefX2, Screen.height * (sCoefY2 - sCoefDY), s22Bottom.position.z);
+        
+        
+        //Counters
+        var cCoefX1 = 0.24f;
+        var cCoefX2 = 0.5f;
+        var cCoefX3 = 0.78f;
+        var cCoefY1 = 0.0f;
+        var cCoefY2 = 0.0f;
+
+        if (aspectRatio < 0.5f)
+        {
+            cCoefY1 = 0.84f;
+            cCoefY2 = 0.79f;
+        }
+        else
+        {
+            cCoefY1 = 0.86f;
+            cCoefY2 = 0.81f;
+        }
+        
+        var text1 = GameObject.Find("steps_text").GetComponent<RectTransform>();
+        text1.position = new Vector3(Screen.width * cCoefX1, Screen.height * cCoefY1, text1.position.z);
+        
+        var counter1 = GameObject.Find("steps_counter").GetComponent<RectTransform>();
+        counter1.position = new Vector3(Screen.width * cCoefX1, Screen.height * cCoefY2, counter1.position.z);
+        
+        var text2 = GameObject.Find("level_text").GetComponent<RectTransform>();
+        text2.position = new Vector3(Screen.width * cCoefX2, Screen.height * cCoefY1, text2.position.z);
+        
+        var counter2 = GameObject.Find("level_counter").GetComponent<RectTransform>();
+        counter2.position = new Vector3(Screen.width * cCoefX2, Screen.height * cCoefY2, counter2.position.z);
+        
+        var text3 = GameObject.Find("record_text").GetComponent<RectTransform>();
+        text3.position = new Vector3(Screen.width * cCoefX3, Screen.height * cCoefY1, text3.position.z);
+        
+        var counter3 = GameObject.Find("record_counter").GetComponent<RectTransform>();
+        counter3.position = new Vector3(Screen.width * cCoefX3, Screen.height * cCoefY2, counter3.position.z);
     }
 }
