@@ -65,7 +65,8 @@ public class LowerButtons : MonoBehaviour
     {
         if (n != mButtonBeforePressed)
         {
-            float buttonDelta = Screen.width * 0.2f;
+            var buttonDelta = mButtons[mButtonBeforePressed].GetComponent<RectTransform>().sizeDelta.x -
+                              mButtons[n].GetComponent<RectTransform>().sizeDelta.x;
 
             var trans = mButtons[n].GetComponent<RectTransform>();
             trans.sizeDelta = new Vector2(trans.sizeDelta.x + buttonDelta, trans.sizeDelta.y);
