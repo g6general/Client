@@ -14,10 +14,36 @@ public class LowerButtons : MonoBehaviour
     private float mCameraEpsilon = 0.1f;
     private float mCameraVelocityCoef = 0.3f;
 
+    private List<float> mTopButtonPositions;
+    private List<float> mGameButtonPositions;
+    private List<float> mShopButtonPositions;
+
     void Start()
     {
         GameObject.Find("canvas_top").GetComponent<Canvas>().enabled = false;
         GameObject.Find("canvas_shop").GetComponent<Canvas>().enabled = false;
+
+        var activeButton = 365f;
+        var inactiveButton = 217f;
+        
+        mTopButtonPositions = new List<float>
+        {
+            activeButton / 2,
+            inactiveButton / 2
+        };
+
+        mGameButtonPositions = new List<float>
+        {
+            inactiveButton + activeButton / 2,
+            activeButton + inactiveButton / 2,
+            inactiveButton + inactiveButton / 2
+        };
+        
+        mShopButtonPositions = new List<float>
+        {
+            activeButton + inactiveButton + inactiveButton / 2,
+            2 * inactiveButton + activeButton / 2
+        };
     }
 
     public void OnButtonPress(int n)
@@ -80,43 +106,35 @@ public class LowerButtons : MonoBehaviour
 
             if (n == 0)
             {
-                trans1st.position = new Vector3(trans1st.position.x + buttonDelta / 2, trans1st.position.y, trans1st.position.y);
+                trans1st.anchoredPosition = new Vector3(mTopButtonPositions[0], trans1st.anchoredPosition.y);
+                trans2nd.anchoredPosition = new Vector3(mGameButtonPositions[1], trans2nd.anchoredPosition.y);
                 
-                if (mButtonBeforePressed == 1)
+                if (mButtonBeforePressed == 2)
                 {
-                    trans2nd.position = new Vector3(trans2nd.position.x + buttonDelta / 2, trans2nd.position.y, trans2nd.position.z);
-                }
-                else if (mButtonBeforePressed == 2)
-                {
-                    trans2nd.position = new Vector3(trans2nd.position.x + buttonDelta, trans2nd.position.y, trans2nd.position.z);
-                    trans3rd.position = new Vector3(trans3rd.position.x + buttonDelta / 2, trans3rd.position.y, trans3rd.position.z);
+                    trans3rd.anchoredPosition = new Vector3(mShopButtonPositions[0], trans3rd.anchoredPosition.y);
                 }
             }
             else if (n == 1)
             {
+                trans2nd.anchoredPosition = new Vector3(mGameButtonPositions[0], trans2nd.anchoredPosition.y);
+                
                 if (mButtonBeforePressed == 0)
                 {
-                    trans1st.position = new Vector3(trans1st.position.x - buttonDelta / 2, trans1st.position.y, trans1st.position.y);
-                    trans2nd.position = new Vector3(trans2nd.position.x - buttonDelta / 2, trans2nd.position.y, trans2nd.position.y);
+                    trans1st.anchoredPosition = new Vector3(mTopButtonPositions[1], trans1st.anchoredPosition.y);
                 }
                 else if (mButtonBeforePressed == 2)
                 {
-                    trans2nd.position = new Vector3(trans2nd.position.x + buttonDelta / 2, trans2nd.position.y, trans2nd.position.z);
-                    trans3rd.position = new Vector3(trans3rd.position.x + buttonDelta / 2, trans3rd.position.y, trans3rd.position.z);
+                    trans3rd.anchoredPosition = new Vector3(mShopButtonPositions[0], trans3rd.anchoredPosition.y);
                 }
             }
             else if (n == 2)
             {
-                trans3rd.position = new Vector3(trans3rd.position.x - buttonDelta / 2, trans3rd.position.y, trans3rd.position.z);
+                trans3rd.anchoredPosition = new Vector3(mShopButtonPositions[1], trans3rd.anchoredPosition.y);
+                trans2nd.anchoredPosition = new Vector3(mGameButtonPositions[2], trans2nd.anchoredPosition.y);
                 
                 if (mButtonBeforePressed == 0)
                 {
-                    trans1st.position = new Vector3(trans1st.position.x - buttonDelta / 2, trans1st.position.y, trans1st.position.y);
-                    trans2nd.position = new Vector3(trans2nd.position.x - buttonDelta, trans2nd.position.y, trans2nd.position.y);
-                }
-                else if (mButtonBeforePressed == 1)
-                {
-                    trans2nd.position = new Vector3(trans2nd.position.x - buttonDelta / 2, trans2nd.position.y, trans2nd.position.z);
+                    trans1st.anchoredPosition = new Vector3(mTopButtonPositions[1], trans1st.anchoredPosition.y);
                 }
             }
         }

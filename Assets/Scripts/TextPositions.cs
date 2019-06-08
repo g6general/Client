@@ -367,8 +367,8 @@ public class TextPositions : MonoBehaviour
         }
         else
         {
-            countersMaxFont = 70;
-            countersMinFont = 45;
+            countersMaxFont = 80;
+            countersMinFont = 55;
         }
         
         var coefX = 0.6f;
