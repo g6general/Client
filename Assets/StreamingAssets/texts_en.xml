@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<texts>
+	<top_button_text value="Top" />
+	<game_button_text value="Game" />
+	<shop_button_text value="Shop" />
+	<music_label value="Music" />
+	<sound_label value="Sound" />
+	<language_label value="Language" />
+	<steps_counter value="Steps" />
+	<level_counter value="Level" />
+	<record_counter value="Record" />
+</texts>

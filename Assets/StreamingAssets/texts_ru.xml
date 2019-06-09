@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<texts>
+	<top_button_text value="Топ" />
+	<game_button_text value="Игра" />
+	<shop_button_text value="Стол" />
+	<music_label value="Музыка" />
+	<sound_label value="Звук" />
+	<language_label value="Язык" />
+	<steps_counter value="Шаги" />
+	<level_counter value="Уровень" />
+	<record_counter value="Рекорд" />
+</texts>
