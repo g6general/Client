@@ -46,6 +46,20 @@ public class LowerButtons : MonoBehaviour
         };
     }
 
+    public void SetButtonLabels()
+    {
+        var gameData = GameObject.Find("Main Camera").GetComponent<GameData>();
+        
+        var label0 = mButtons[0].GetComponent<Button>().GetComponentInChildren<Text>();
+        label0.text = gameData.GetString("top_button_text");
+        
+        var label1 = mButtons[1].GetComponent<Button>().GetComponentInChildren<Text>();
+        label1.text = gameData.GetString("game_button_text");
+        
+        var label2 = mButtons[2].GetComponent<Button>().GetComponentInChildren<Text>();
+        label2.text = gameData.GetString("shop_button_text");
+    }
+
     public void OnButtonPress(int n)
     {
         ListTopInfo(n == 0);

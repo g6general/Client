@@ -29,6 +29,9 @@ public class SliderUI : MonoBehaviour
             langNumber = 1;
 
         GameObject.Find("dropdown_lang").GetComponent<Dropdown>().value = langNumber;
+
+        GameObject.Find("Main Camera").GetComponent<LowerButtons>().SetButtonLabels();
+
     }
 
     public void OnMusicValueChange(float slider)
@@ -71,5 +74,7 @@ public class SliderUI : MonoBehaviour
             GameObject.Find("Main Camera").GetComponent<GameData>().SetLanguage(Settings.eLanguage.RUSSIAN);
         else
             GameObject.Find("Main Camera").GetComponent<GameData>().SetLanguage(Settings.eLanguage.ENGLISH);
+        
+        GameObject.Find("Main Camera").GetComponent<LowerButtons>().SetButtonLabels();
     }
 }
