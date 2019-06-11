@@ -11,10 +11,6 @@ public class SliderUI : MonoBehaviour
 
     void Start()
     {
-        //
-        Debug.Log("slider-start!");
-        //
-        
         mMusicOn.SetActive(false);
         mMusicOff.SetActive(true);
         mSoundOn.SetActive(false);
@@ -77,5 +73,7 @@ public class SliderUI : MonoBehaviour
             GameObject.Find("Main Camera").GetComponent<GameData>().SetLanguage(Settings.eLanguage.ENGLISH);
         
         GameObject.Find("Main Camera").GetComponent<LowerButtons>().SetButtonLabels();
+        GameObject.Find("button_close").GetComponent<SettingsMenu>().SetSettingsLabels();
+        GameObject.Find("canvas_counters").GetComponent<Counters>().SetCounterLabels();
     }
 }
