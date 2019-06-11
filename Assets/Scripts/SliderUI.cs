@@ -11,6 +11,10 @@ public class SliderUI : MonoBehaviour
 
     void Start()
     {
+        //
+        Debug.Log("slider-start!");
+        //
+        
         mMusicOn.SetActive(false);
         mMusicOff.SetActive(true);
         mSoundOn.SetActive(false);
@@ -29,9 +33,6 @@ public class SliderUI : MonoBehaviour
             langNumber = 1;
 
         GameObject.Find("dropdown_lang").GetComponent<Dropdown>().value = langNumber;
-
-        GameObject.Find("Main Camera").GetComponent<LowerButtons>().SetButtonLabels();
-
     }
 
     public void OnMusicValueChange(float slider)

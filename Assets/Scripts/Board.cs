@@ -47,10 +47,12 @@ public class Board : MonoBehaviour
     {
         Debug.Log($"Screen width: {Screen.width}, Screen height: {Screen.height}");
         
+        GameObject.Find("settings_menu").SetActive(false);
+
         Init();
         mEngine.StartGame(mCurrentLevel);
 
-        float magicNumber = 7.39f;
+        var magicNumber = 7.39f;
         mCamera.orthographicSize = (magicNumber * Screen.height) / (2 * Screen.width);
     }
 
