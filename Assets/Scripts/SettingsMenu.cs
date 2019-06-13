@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class SettingsMenu : MonoBehaviour
 {
     public GameObject mMenu;
-
     public void OnCall()
     {
         if (mMenu.gameObject.activeSelf == true)
@@ -31,6 +30,7 @@ public class SettingsMenu : MonoBehaviour
 
     private void Close()
     {
+        GameObject.Find("Main Camera").GetComponent<GameData>().SetNicknameIfEmpty();
         mMenu.gameObject.SetActive(false);
     }
 }

@@ -6,12 +6,16 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Xml.Linq;
+using UnityEngine.UI;
 
 public class GameData : MonoBehaviour
 {
     private Settings mSettings;
     private Dictionary<string, string> mTextsRu;
     private Dictionary<string, string> mTextsEn;
+
+    private string mNickname;
+    private bool IsPlaceholder;
 
     void Start()
     {
@@ -21,6 +25,69 @@ public class GameData : MonoBehaviour
         
         LoadSettings();
         LoadTexts();
+        LoadNickName();
+    }
+
+    private void LoadNickName()
+    {
+        IsPlaceholder = true;
+        mNickname = GetString("nicknamePlaceholder");
+
+        SetNicknameField();
+        SetAllLabels();
+    }
+
+    public void SetNickname(string newNick)
+    {
+        IsPlaceholder = false;
+        mNickname = newNick;
+        SetAllLabels();
+    }
+
+    public void SetNicknameIfEmpty()
+    {
+        if (IsPlaceholder)
+            return;
+
+        if (mNickname.Length == 0)
+        {
+            SetNickname("Player");
+            SetNicknameField();
+        }
+    }
+
+    public void ChangeNickLanguage()
+    {
+        if (!IsPlaceholder)
+            return;
+        
+        mNickname = GetString("nicknamePlaceholder");
+        SetNicknameField();
+        SetAllLabels();
+    }
+
+    private void SetAllLabels()
+    {
+        GameObject.Find("nickname_text").GetComponent<Text>().text = mNickname;
+        GameObject.Find("top_nick_text_you").GetComponent<Text>().text = mNickname;
+    }
+    
+    private void SetNicknameField()
+    {
+        if (IsPlaceholder)
+        {
+            var placeholder = GameObject.Find("input_field_nick").GetComponent<InputField>().placeholder;
+            placeholder.GetComponent<Text>().text = mNickname;
+        }
+        else
+        {
+            GameObject.Find("input_field_nick").GetComponent<InputField>().text = mNickname;
+        }
+    }
+
+    public string GetNickname()
+    {
+        return mNickname;
     }
 
     void OnApplicationQuit()
