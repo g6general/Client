@@ -21,6 +21,18 @@ namespace Match3Engine
         
         public enum eMode { CHECK_STATE, PERFORMING_COMBOS, INACTION, INACTION_BY_TIMER, COMPLETENESS };
 
+        public struct LevelInfo
+        {
+            public LevelInfo(int coins, int steps)
+            {
+                this.coins = coins;
+                this.steps = steps;
+            }
+            
+            public int coins;
+            public int steps;
+        }
+
         private eMode mMode;
         private const uint TIMER_VALUE = 2;
         private uint mTimer = TIMER_VALUE;
@@ -31,6 +43,7 @@ namespace Match3Engine
         private M3Position mStepBeginPos;
         private M3Position mStepEndPos;
         private List<M3Position> mVoidsForReshuffle;
+        private List<LevelInfo> mLevels;
 
         private bool mNeedLogStep = true;
 
@@ -59,7 +72,13 @@ namespace Match3Engine
             mStepBeginPos = new M3Position();
             mStepEndPos = new M3Position();
             mVoidsForReshuffle = new List<M3Position>();
+            mLevels = new List<LevelInfo>();
             mMode = eMode.INACTION;
+        }
+
+        public List<LevelInfo> GetLevelsInfo()
+        {
+            return mLevels;
         }
 
         private string GetConfigData(string fileName)
@@ -82,10 +101,20 @@ namespace Match3Engine
             var frames = new Dictionary<M3Position, M3Cell.eState>();
             var board = XElement.Parse(GetConfigData("frames.xml"));
 
+            mLevels.Clear();
             var curLevel = board.FirstNode;
             while (curLevel != null)
             {
                 var nodeLevel = (XElement) curLevel;
+
+                var stepsAttribute = nodeLevel.FirstAttribute.NextAttribute;
+                var coinsAttribute = stepsAttribute.NextAttribute;
+                    
+                var steps = Convert.ToInt32(stepsAttribute.Value);
+                var coins = Convert.ToInt32(coinsAttribute.Value);
+                    
+                mLevels.Add(new LevelInfo(coins, steps));
+
                 if (level != Convert.ToInt32(nodeLevel.FirstAttribute.Value))
                 {
                     curLevel = curLevel.NextNode;

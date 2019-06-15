@@ -63,6 +63,18 @@ namespace Match3Engine
         {
             mGamePlay.GameProcess();
         }
+
+        public M3GamePlay.LevelInfo GetLevelInfo(int level)
+        {
+            var levels = mGamePlay.GetLevelsInfo();
+            return levels[level];
+        }
+
+        public int GetNumberOfLevels()
+        {
+            var levels = mGamePlay.GetLevelsInfo();
+            return levels.Count;
+        }
         
         public void SetPrintFunction(M3Settings.PrintFunction func)
         {
