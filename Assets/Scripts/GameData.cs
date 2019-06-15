@@ -95,37 +95,47 @@ public class GameData : MonoBehaviour
         UnloadSettings();
     }
     
-    private string GetConfigData(string fileName)
+    private string GetConfigData(string dirPath, string fileName)
     {
-        var configPath = Path.Combine(Application.streamingAssetsPath + "/", fileName);
+        var configPath = Path.Combine(dirPath, fileName);
         string data;
-            
+
+        if (File.Exists(configPath))
+        {
 #if UNITY_EDITOR || UNITY_IOS
-        data = File.ReadAllText(configPath);
+            data = File.ReadAllText(configPath);
 #elif UNITY_ANDROID
-        WWW reader = new WWW (configPath);
-        while (!reader.isDone) {}
-        data = reader.text;
+            WWW reader = new WWW (configPath);
+            while (!reader.isDone) {}
+            data = reader.text;
 #endif
-        return data;
+            return data;
+        }
+
+        return "";
     }
 
     private void LoadSettings()
     {
-        var configData = GetConfigData("settings.json");
-        
-        var stream = new MemoryStream();
-        var writer = new StreamWriter(stream);
-        var serializer = new DataContractJsonSerializer(typeof(Settings));
-        
-        writer.Write(configData);
-        writer.Flush();
-        stream.Position = 0;
-        
-        mSettings = (Settings)serializer.ReadObject(stream);
-        
-        if (mSettings == null)
+        var dirPath = Application.streamingAssetsPath + "/GeneratedConfigs/";
+        var configData = GetConfigData(dirPath,"settings.json");
+
+        if (configData.Length > 0)
+        {
+            var stream = new MemoryStream();
+            var writer = new StreamWriter(stream);
+            var serializer = new DataContractJsonSerializer(typeof(Settings));
+
+            writer.Write(configData);
+            writer.Flush();
+            stream.Position = 0;
+
+            mSettings = (Settings) serializer.ReadObject(stream) ?? new Settings();
+        }
+        else
+        {
             mSettings = new Settings();
+        }
     }
 
     private void UnloadSettings()
@@ -136,14 +146,16 @@ public class GameData : MonoBehaviour
         serializer.WriteObject(stream, mSettings);
         
         var data = System.Text.Encoding.UTF8.GetString(stream.ToArray());
-        var configPath = Path.Combine(Application.streamingAssetsPath + "/", "settings.json");
+        var dirPath = Application.streamingAssetsPath + "/GeneratedConfigs/";
+        var configPath = Path.Combine(dirPath, "settings.json");
 
         File.WriteAllText(configPath, data);
     }
     
     private void LoadTexts()
     {
-        var configData = GetConfigData("texts_en.xml");
+        var dirPath = Application.streamingAssetsPath + "/";
+        var configData = GetConfigData(dirPath, "texts_en.xml");
 
         var texts = XElement.Parse(configData);
         var text = texts.FirstNode;
@@ -159,7 +171,7 @@ public class GameData : MonoBehaviour
             text = text.NextNode;
         }
         
-        configData = GetConfigData("texts_ru.xml");
+        configData = GetConfigData(dirPath, "texts_ru.xml");
 
         texts = XElement.Parse(configData);
         text = texts.FirstNode;

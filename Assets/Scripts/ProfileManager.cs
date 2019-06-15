@@ -22,32 +22,45 @@ public class ProfileManager : MonoBehaviour
     
     private string GetConfigData(string fileName)
     {
-        var configPath = Path.Combine(Application.streamingAssetsPath + "/", fileName);
+        var dirPath = Application.streamingAssetsPath + "/GeneratedConfigs/";
+        var configPath = Path.Combine(dirPath, fileName);
         string data;
-            
+
+        if (File.Exists(configPath))
+        {
 #if UNITY_EDITOR || UNITY_IOS
-        data = File.ReadAllText(configPath);
+            data = File.ReadAllText(configPath);
 #elif UNITY_ANDROID
-        WWW reader = new WWW (configPath);
-        while (!reader.isDone) {}
-        data = reader.text;
+            WWW reader = new WWW (configPath);
+            while (!reader.isDone) {}
+            data = reader.text;
 #endif
-        return data;
+            return data;
+        }
+
+        return "";
     }
 
     private void LoadProfile()
     {
         var configData = GetConfigData("profile.json");
-        
-        var stream = new MemoryStream();
-        var writer = new StreamWriter(stream);
-        var serializer = new DataContractJsonSerializer(typeof(Profile));
-        
-        writer.Write(configData);
-        writer.Flush();
-        stream.Position = 0;
-        
-        mProfile = (Profile)serializer.ReadObject(stream) ?? new Profile();
+
+        if (configData.Length > 0)
+        {
+            var stream = new MemoryStream();
+            var writer = new StreamWriter(stream);
+            var serializer = new DataContractJsonSerializer(typeof(Profile));
+
+            writer.Write(configData);
+            writer.Flush();
+            stream.Position = 0;
+
+            mProfile = (Profile) serializer.ReadObject(stream) ?? new Profile();
+        }
+        else
+        {
+            mProfile = new Profile();
+        }
     }
     
     private void UnloadProfile()
@@ -58,7 +71,8 @@ public class ProfileManager : MonoBehaviour
         serializer.WriteObject(stream, mProfile);
         
         var data = System.Text.Encoding.UTF8.GetString(stream.ToArray());
-        var configPath = Path.Combine(Application.streamingAssetsPath + "/", "profile.json");
+        var dirPath = Application.streamingAssetsPath + "/GeneratedConfigs/";
+        var configPath = Path.Combine(dirPath, "profile.json");
 
         File.WriteAllText(configPath, data);
     }
@@ -66,30 +80,30 @@ public class ProfileManager : MonoBehaviour
 
 [DataContract] public class Profile
 {
-    [DataMember] private string mNickname = "nickname";
+    [DataMember] private string mNickname = "Player";
     [DataMember] private string mCoins = "0";
     [DataMember] private string mRecord = "0";
     
-    string GetNickname() { return mNickname; }
+    public string GetNickname() { return mNickname; }
 
-    int GetCoins()
+    public int GetCoins()
     {
         return int.Parse(mCoins, CultureInfo.InvariantCulture.NumberFormat);
     }
 
-    int GetRecord()
+    public int GetRecord()
     {
         return int.Parse(mRecord, CultureInfo.InvariantCulture.NumberFormat);
     }
     
-    void SetNickname(string nickname) { mNickname = nickname; }
+    public void SetNickname(string nickname) { mNickname = nickname; }
 
-    void SetCoins(int coins)
+    public void SetCoins(int coins)
     {
         mCoins = coins.ToString();
     }
 
-    void SetRecord(int record)
+    public void SetRecord(int record)
     {
         mRecord = record.ToString();
     }
