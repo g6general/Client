@@ -22,7 +22,7 @@ namespace Match3Engine
         public enum eMode { CHECK_STATE, PERFORMING_COMBOS, INACTION, INACTION_BY_TIMER, COMPLETENESS };
 
         private eMode mMode;
-        private const uint TIMER_VALUE = 2;  //3
+        private const uint TIMER_VALUE = 2;
         private uint mTimer = TIMER_VALUE;
         private List<M3Combo> mCurrentCombos;
         private M3Figure.eType mCurrentGiftType;
@@ -31,6 +31,8 @@ namespace Match3Engine
         private M3Position mStepBeginPos;
         private M3Position mStepEndPos;
         private List<M3Position> mVoidsForReshuffle;
+
+        private bool mNeedLogStep = true;
 
         public struct DropInfo
         {
@@ -353,9 +355,20 @@ namespace Match3Engine
                     if (mStepBeginPos.IsExist() || mStepEndPos.IsExist())
                     {
                         MoveObjects(mStepEndPos, mStepBeginPos);
+                        mNeedLogStep = false;
                         mStepBeginPos.Reset();
                         mStepEndPos.Reset();
                         return;
+                    }
+                    
+                    if (mNeedLogStep)
+                    {
+                        M3Settings.DebugLog("M3: Step is completed");
+                        M3Settings.OnStepComplete();
+                    }
+                    else
+                    {
+                        mNeedLogStep = true;
                     }
 
                     if (CheckExit())

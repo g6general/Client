@@ -13,6 +13,7 @@ namespace Match3Engine
         public delegate void DestroyFrameFunction(M3Position pos, M3Cell.eState state);
         public delegate void ActionFunction(eState state, M3Position targetPos);
         public delegate void OnGameCompleteFunction();
+        public delegate void OnStepCompleteFunction();
         
         private static PrintFunction mPrintFunc;
         private static CreateFunction mCreateFunc;
@@ -21,6 +22,7 @@ namespace Match3Engine
         private static DestroyFrameFunction mDestroyFrameFunc;
         private static ActionFunction[,] mActionFuncs;
         private static OnGameCompleteFunction mGameCompleteFunc;
+        private static OnStepCompleteFunction mStepCompleteFunc;
 
         public static void SetPrintDelegate(PrintFunction func) { mPrintFunc = func; }
         
@@ -33,6 +35,8 @@ namespace Match3Engine
         public static void SetDestroyFrameDelegate(DestroyFrameFunction func) { mDestroyFrameFunc = func; }
         
         public static void SetGameCompleteDelegate(OnGameCompleteFunction func) { mGameCompleteFunc = func; }
+        
+        public static void SetStepCompleteDelegate(OnStepCompleteFunction func) { mStepCompleteFunc = func; }
 
         public static void SetActionDelegate(M3Position pos, ActionFunction func)
         {
@@ -61,6 +65,8 @@ namespace Match3Engine
         public static void DestroyFrameObject(M3Position pos, M3Cell.eState state) { mDestroyFrameFunc(pos, state); }
         
         public static void OnGameComplete() { mGameCompleteFunc(); }
+        
+        public static void OnStepComplete() { mStepCompleteFunc(); }
 
         public static void SetAction(eState state, M3Position currentPos, M3Position targetPos)
         {

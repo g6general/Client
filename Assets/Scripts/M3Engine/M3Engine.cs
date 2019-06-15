@@ -94,6 +94,11 @@ namespace Match3Engine
             M3Settings.SetGameCompleteDelegate(func);
         }
         
+        public void SetStepCompleteFunction(M3Settings.OnStepCompleteFunction func)
+        {
+            M3Settings.SetStepCompleteDelegate(func);
+        }
+        
         public void SetActionFunction(M3Position pos, M3Settings.ActionFunction func)
         {
             M3Settings.SetActionDelegate(pos, func);

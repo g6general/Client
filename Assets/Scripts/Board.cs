@@ -78,6 +78,7 @@ public class Board : MonoBehaviour
         mEngine.SetCreateFrameFunction(CreateFrameObject);
         mEngine.SetDestroyFrameFunction(DestroyFrameObject);
         mEngine.SetGameCompleteFunction(OnGameCompleted);
+        mEngine.SetStepCompleteFunction(OnStepCompleted);
         
         mFirstTouchPos = new M3Position();
     }
@@ -95,6 +96,11 @@ public class Board : MonoBehaviour
             mCamera.backgroundColor = Color.yellow;
             mGameCompleted = true;
         }
+    }
+
+    private void OnStepCompleted()
+    {
+        Debug.Log("STEP COMPLETE");
     }
 
     public bool IsGameCompleted() { return mGameCompleted; }
