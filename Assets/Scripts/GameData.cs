@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
@@ -10,10 +11,16 @@ using UnityEngine.UI;
 
 public class GameData : MonoBehaviour
 {
+    private string mGameVersion;
     private Settings mSettings;
     private Dictionary<string, string> mTextsRu;
     private Dictionary<string, string> mTextsEn;
 
+    void Awake()
+    {
+        SetCurrentGameVersion();
+    }
+    
     void Start()
     {
         mTextsRu = new Dictionary<string, string>();
@@ -22,6 +29,16 @@ public class GameData : MonoBehaviour
         
         LoadSettings();
         LoadTexts();
+    }
+
+    private void SetCurrentGameVersion()
+    {
+        mGameVersion = "1.0.0";
+    }
+    
+    public string GetCurrentGameVersion()
+    {
+        return mGameVersion;
     }
     
     void OnApplicationQuit()

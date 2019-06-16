@@ -63,9 +63,41 @@ public class ProfileManager : MonoBehaviour
             mProfile = new Profile();
         }
 
+        CheckGameVersion();
+
         SetCoinsCounterUI();
         SetRecordCounterUI();
         SetNicknameUI();
+    }
+
+    private void CheckGameVersion()
+    {
+        var profileVersion = mProfile.GetProfileGameVersion();
+        var currentVersion = GameObject.Find("Main Camera").GetComponent<GameData>().GetCurrentGameVersion();
+
+        if (profileVersion == "0.0.0")
+        {
+            mProfile.SetProfileGameVersion(currentVersion);
+            return;
+        }
+
+        var profileNumbers = profileVersion.Split('.');
+        var currentNumbers = currentVersion.Split('.');
+        
+        if (profileNumbers[0] != currentNumbers[0])
+        {
+            Debug.Log("Major update detected.");
+        }
+        else if (profileNumbers[1] != currentNumbers[1])
+        {
+            Debug.Log("Minor update detected.");
+        }
+        else if (profileNumbers[2] != currentNumbers[2])
+        {
+            Debug.Log("Hotfix detected.");
+        }
+        
+        mProfile.SetProfileGameVersion(currentVersion);
     }
     
     private void UnloadProfile()
@@ -106,7 +138,12 @@ public class ProfileManager : MonoBehaviour
     [DataMember] private string mNickname = "Player";
     [DataMember] private string mCoins = "0";
     [DataMember] private string mRecord = "0";
+    [DataMember] private string mGameVersion = "0.0.0";
+
+    public string GetProfileGameVersion() { return mGameVersion; }
     
+    public void SetProfileGameVersion(string newVersion) { mGameVersion = newVersion; }
+
     public string GetNickname() { return mNickname; }
 
     public int GetCoins()
