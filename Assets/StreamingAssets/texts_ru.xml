@@ -9,5 +9,4 @@
 	<steps_counter value="Шаги" />
 	<level_counter value="Уровень" />
 	<record_counter value="Рекорд" />
-	<nicknamePlaceholder value="ваш ник" />
 </texts>

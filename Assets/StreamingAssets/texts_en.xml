@@ -9,5 +9,4 @@
 	<steps_counter value="Steps" />
 	<level_counter value="Level" />
 	<record_counter value="Record" />
-	<nicknamePlaceholder value="nickname" />
 </texts>

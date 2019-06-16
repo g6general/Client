@@ -5,6 +5,7 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
+using UnityEngine.UI;
 
 public class ProfileManager : MonoBehaviour
 {
@@ -61,6 +62,10 @@ public class ProfileManager : MonoBehaviour
         {
             mProfile = new Profile();
         }
+
+        SetCoinsCounterUI();
+        SetRecordCounterUI();
+        SetNicknameUI();
     }
     
     private void UnloadProfile()
@@ -75,6 +80,24 @@ public class ProfileManager : MonoBehaviour
         var configPath = Path.Combine(dirPath, "profile.json");
 
         File.WriteAllText(configPath, data);
+    }
+
+    public void SetCoinsCounterUI()
+    {
+        GameObject.Find("coins_counter").GetComponent<Text>().text = mProfile.GetCoins().ToString();
+    }
+    
+    public void SetRecordCounterUI()
+    {
+        GameObject.Find("record_counter").GetComponent<Text>().text = mProfile.GetRecord().ToString();
+    }
+
+    public void SetNicknameUI()
+    {
+        var nickname = mProfile.GetNickname();
+        GameObject.Find("nickname_text").GetComponent<Text>().text = nickname;
+        GameObject.Find("top_nick_text_you").GetComponent<Text>().text = nickname;
+        GameObject.Find("input_field_nick").GetComponent<InputField>().text = nickname;
     }
 }
 
@@ -95,16 +118,22 @@ public class ProfileManager : MonoBehaviour
     {
         return int.Parse(mRecord, CultureInfo.InvariantCulture.NumberFormat);
     }
-    
-    public void SetNickname(string nickname) { mNickname = nickname; }
+
+    public void SetNickname(string nickname)
+    {
+        mNickname = nickname;
+        GameObject.Find("Main Camera").GetComponent<ProfileManager>().SetNicknameUI();
+    }
 
     public void SetCoins(int coins)
     {
         mCoins = coins.ToString();
+        GameObject.Find("Main Camera").GetComponent<ProfileManager>().SetCoinsCounterUI();
     }
 
     public void SetRecord(int record)
     {
         mRecord = record.ToString();
+        GameObject.Find("Main Camera").GetComponent<ProfileManager>().SetRecordCounterUI();
     }
 }

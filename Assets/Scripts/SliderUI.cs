@@ -75,6 +75,5 @@ public class SliderUI : MonoBehaviour
         GameObject.Find("Main Camera").GetComponent<LowerButtons>().SetButtonLabels();
         GameObject.Find("button_close").GetComponent<SettingsMenu>().SetSettingsLabels();
         GameObject.Find("canvas_counters").GetComponent<Counters>().SetCounterLabels();
-        GameObject.Find("Main Camera").GetComponent<GameData>().ChangeNickLanguage();
     }
 }

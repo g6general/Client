@@ -9,6 +9,6 @@ public class InputFieldUi : MonoBehaviour
     public void OnNickChanged()
     {
         var newNick = GameObject.Find("input_field_nick").GetComponent<InputField>().text;
-        GameObject.Find("Main Camera").GetComponent<GameData>().SetNickname(newNick);
+        GameObject.Find("Main Camera").GetComponent<ProfileManager>().mProfile.SetNickname(newNick);
     }
 }

@@ -30,7 +30,10 @@ public class SettingsMenu : MonoBehaviour
 
     private void Close()
     {
-        GameObject.Find("Main Camera").GetComponent<GameData>().SetNicknameIfEmpty();
+        var nick = GameObject.Find("Main Camera").GetComponent<ProfileManager>().mProfile.GetNickname();
+        if (nick.Length == 0)
+            GameObject.Find("Main Camera").GetComponent<ProfileManager>().mProfile.SetNickname("Player");
+        
         mMenu.gameObject.SetActive(false);
     }
 }
