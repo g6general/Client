@@ -13,6 +13,8 @@ public class Board : MonoBehaviour
 
     public int mCurrentLevel;
     public int mNumberOfLevels;
+    public int mStepsCounter;
+    public int mLevelsCounter;
 
     public GameObject[] mPrefabs;
     public GameObject[,] mFigures;
@@ -50,10 +52,23 @@ public class Board : MonoBehaviour
         GameObject.Find("settings_menu").SetActive(false);
 
         Init();
-        mEngine.StartGame(mCurrentLevel);
+        StartMatch3();
 
         var magicNumber = 7.39f;
         mCamera.orthographicSize = (magicNumber * Screen.height) / (2 * Screen.width);
+    }
+
+    private void StartMatch3()
+    {
+        mEngine.StartGame(0);
+        var info = mEngine.GetLevelInfo(0);
+        
+        mStepsCounter = info.steps;
+        mLevelsCounter = 1;
+        mNumberOfLevels = mEngine.GetNumberOfLevels();
+
+        GameObject.Find("steps_counter").GetComponent<Text>().text = mStepsCounter.ToString();
+        GameObject.Find("level_counter").GetComponent<Text>().text = mLevelsCounter.ToString();
     }
 
     void Update()
@@ -65,8 +80,10 @@ public class Board : MonoBehaviour
     {
         mWidth = 7;
         mHeight = 7;
-        mCurrentLevel = 1;
-        mNumberOfLevels = 5;
+        mCurrentLevel = 0;
+        mNumberOfLevels = 0;
+        mStepsCounter = 0;
+        mLevelsCounter = 0;
         mFigures = new GameObject[mWidth, mHeight];
         mFrames = new List<Frame>();
         mGameCompleted = false;
@@ -85,22 +102,49 @@ public class Board : MonoBehaviour
 
     private void OnGameCompleted()
     {
-        ++mCurrentLevel;
+        var info1 = mEngine.GetLevelInfo(mCurrentLevel);
+        
+        var profileCoins = GameObject.Find("Main Camera").GetComponent<ProfileManager>().mProfile.GetCoins();
+        GameObject.Find("Main Camera").GetComponent<ProfileManager>().mProfile.SetCoins(profileCoins + info1.coins);
 
-        if (mCurrentLevel <= mNumberOfLevels)
-        {
-            mEngine.RestartGame(mCurrentLevel);
-        }
-        else
-        {
-            mCamera.backgroundColor = Color.yellow;
-            mGameCompleted = true;
-        }
+        var profileRecord = GameObject.Find("Main Camera").GetComponent<ProfileManager>().mProfile.GetRecord();
+        if (mLevelsCounter > profileRecord)
+            GameObject.Find("Main Camera").GetComponent<ProfileManager>().mProfile.SetRecord(mLevelsCounter);
+        
+        ++mCurrentLevel;
+        ++mLevelsCounter;
+        
+        if (mCurrentLevel >= mNumberOfLevels)
+            mCurrentLevel = 0;
+        
+        var info2 = mEngine.GetLevelInfo(mCurrentLevel);
+        mStepsCounter = info2.steps;
+        
+        GameObject.Find("level_counter").GetComponent<Text>().text = mLevelsCounter.ToString();
+        GameObject.Find("steps_counter").GetComponent<Text>().text = mStepsCounter.ToString();
+
+        mEngine.RestartGame(mCurrentLevel);
     }
 
     private void OnStepCompleted()
     {
-        Debug.Log("STEP COMPLETE");
+        --mStepsCounter;
+        GameObject.Find("steps_counter").GetComponent<Text>().text = mStepsCounter.ToString();
+
+        if (mStepsCounter <= 0)
+        {
+            Debug.Log("Game over!");
+            
+            mCurrentLevel = 0;
+            mLevelsCounter = 1;
+            var info = mEngine.GetLevelInfo(mCurrentLevel);
+            mStepsCounter = info.steps;
+
+            GameObject.Find("steps_counter").GetComponent<Text>().text = mStepsCounter.ToString();
+            GameObject.Find("level_counter").GetComponent<Text>().text = mLevelsCounter.ToString();
+            
+            mEngine.RestartGame(mCurrentLevel);
+        }
     }
 
     public bool IsGameCompleted() { return mGameCompleted; }
