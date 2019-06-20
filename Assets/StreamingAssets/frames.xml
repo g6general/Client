@@ -5,7 +5,7 @@
 		<position x="3" y="5" type="frame"/>
 		<position x="4" y="5" type="chain"/>
 	</level>
-	<level number="1" steps="3" coins="50">
+	<level number="1" steps="15" coins="50">
 		<position x="2" y="4" type="frame"/>
 		<position x="3" y="4" type="frame"/>
 		<position x="4" y="4" type="chain"/>

@@ -121,7 +121,13 @@ public class ProfileManager : MonoBehaviour
     
     public void SetRecordCounterUI()
     {
-        GameObject.Find("record_counter").GetComponent<Text>().text = mProfile.GetRecord().ToString();
+        var record = mProfile.GetRecord().ToString();
+        
+        GameObject.Find("record_counter").GetComponent<Text>().text = record;
+        var rectTrans = GameObject.Find("record_counter").GetComponent<RectTransform>();
+        rectTrans.sizeDelta = new Vector2(120, rectTrans.sizeDelta.y);
+        
+        GameObject.Find("top_record_text_you").GetComponent<Text>().text = record;
     }
 
     public void SetNicknameUI()
