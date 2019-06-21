@@ -2828,22 +2828,22 @@ PrefabInstance:
     - target: {fileID: 7560034675961539609, guid: e9db12ece050445bfbb597bf1ce6e7fe,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 806
+      value: 0.000011444
       objectReference: {fileID: 0}
     - target: {fileID: 7560034675961539609, guid: e9db12ece050445bfbb597bf1ce6e7fe,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 411
+      value: -34
       objectReference: {fileID: 0}
     - target: {fileID: 7560034675961539609, guid: e9db12ece050445bfbb597bf1ce6e7fe,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 500
+      value: 617.5
       objectReference: {fileID: 0}
     - target: {fileID: 7560034675961539609, guid: e9db12ece050445bfbb597bf1ce6e7fe,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 511.1
+      value: 613.4
       objectReference: {fileID: 0}
     - target: {fileID: 7560034675961539609, guid: e9db12ece050445bfbb597bf1ce6e7fe,
         type: 3}
@@ -2913,12 +2913,12 @@ PrefabInstance:
     - target: {fileID: 7560034676687264318, guid: e9db12ece050445bfbb597bf1ce6e7fe,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 193
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 7560034676687264318, guid: e9db12ece050445bfbb597bf1ce6e7fe,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 212
+      value: 236
       objectReference: {fileID: 0}
     - target: {fileID: 7560034676687264318, guid: e9db12ece050445bfbb597bf1ce6e7fe,
         type: 3}
@@ -2935,7 +2935,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: button_close
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7560034676687264317, guid: e9db12ece050445bfbb597bf1ce6e7fe,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560034676687264317, guid: e9db12ece050445bfbb597bf1ce6e7fe,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1342371769}
+    - target: {fileID: 7560034676687264317, guid: e9db12ece050445bfbb597bf1ce6e7fe,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnCloseBsm
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560034676687264317, guid: e9db12ece050445bfbb597bf1ce6e7fe,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1852566399101266358, guid: e9db12ece050445bfbb597bf1ce6e7fe, type: 3}
+    - {fileID: 604696706, guid: e9db12ece050445bfbb597bf1ce6e7fe, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e9db12ece050445bfbb597bf1ce6e7fe, type: 3}
 --- !u!224 &701850697 stripped
 RectTransform:
@@ -3927,7 +3949,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1100451598}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1342371769}
+        m_MethodName: OnBuy3Bsm
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1100451598
@@ -4617,6 +4650,7 @@ MonoBehaviour:
   - {fileID: 5080321769287385087, guid: b4b5a7c7fd37044f09c797616d43286d, type: 3}
   - {fileID: 5080321769287385087, guid: 4c859c5db44c644419be369238cebb3a, type: 3}
   mCamera: {fileID: 519420031}
+  mBuyStepsMenu: {fileID: 2110438937}
   mFigurePosZ: -5
 --- !u!1 &1347893007
 GameObject:
@@ -6240,7 +6274,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1758512033}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1342371769}
+        m_MethodName: OnBuy2Bsm
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1758512033
@@ -7421,7 +7466,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2083886760}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1342371769}
+        m_MethodName: OnBuy1Bsm
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2083886760
@@ -7461,6 +7517,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083886757}
   m_CullTransparentMesh: 0
+--- !u!1 &2110438937 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7560034675961539610, guid: e9db12ece050445bfbb597bf1ce6e7fe,
+    type: 3}
+  m_PrefabInstance: {fileID: 701850696}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2116276481
 GameObject:
   m_ObjectHideFlags: 0

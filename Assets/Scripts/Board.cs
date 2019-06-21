@@ -25,6 +25,8 @@ public class Board : MonoBehaviour
     public M3Position mFirstTouchPos;
 
     public M3Engine mEngine;
+    
+    public GameObject mBuyStepsMenu;
 
     private bool mGameCompleted;
 
@@ -50,6 +52,7 @@ public class Board : MonoBehaviour
         Debug.Log($"Screen width: {Screen.width}, Screen height: {Screen.height}");
         
         GameObject.Find("settings_menu").SetActive(false);
+        mBuyStepsMenu.SetActive(false);
 
         Init();
         StartMatch3();
@@ -134,17 +137,53 @@ public class Board : MonoBehaviour
         if (mStepsCounter <= 0)
         {
             Debug.Log("Game over!");
-            
-            mCurrentLevel = 0;
-            mLevelsCounter = 1;
-            var info = mEngine.GetLevelInfo(mCurrentLevel);
-            mStepsCounter = info.steps;
-
-            GameObject.Find("steps_counter").GetComponent<Text>().text = mStepsCounter.ToString();
-            GameObject.Find("level_counter").GetComponent<Text>().text = mLevelsCounter.ToString();
-            
-            mEngine.RestartGame(mCurrentLevel);
+            mBuyStepsMenu.SetActive(true);
         }
+    }
+
+    public void OnCloseBsm()
+    {
+        mBuyStepsMenu.SetActive(false);
+        
+        mCurrentLevel = 0;
+        mLevelsCounter = 1;
+        var info = mEngine.GetLevelInfo(mCurrentLevel);
+        mStepsCounter = info.steps;
+
+        GameObject.Find("steps_counter").GetComponent<Text>().text = mStepsCounter.ToString();
+        GameObject.Find("level_counter").GetComponent<Text>().text = mLevelsCounter.ToString();
+
+        mEngine.RestartGame(mCurrentLevel);
+    }
+
+    private void BuyStepsBsm(int steps, int price)
+    {
+        var currentCoins = GameObject.Find("Main Camera").GetComponent<ProfileManager>().mProfile.GetCoins();
+        if (currentCoins < price)
+            return;
+        
+        mBuyStepsMenu.SetActive(false);
+ 
+        mStepsCounter += steps;
+        GameObject.Find("steps_counter").GetComponent<Text>().text = mStepsCounter.ToString();
+
+        currentCoins -= price;
+        GameObject.Find("Main Camera").GetComponent<ProfileManager>().mProfile.SetCoins(currentCoins); 
+    }
+    
+    public void OnBuy1Bsm()
+    {
+        BuyStepsBsm(10, 25);
+    }
+
+    public void OnBuy2Bsm()
+    {
+        BuyStepsBsm(20, 50);
+    }
+    
+    public void OnBuy3Bsm()
+    {
+        BuyStepsBsm(30, 75);
     }
 
     public bool IsGameCompleted() { return mGameCompleted; }
