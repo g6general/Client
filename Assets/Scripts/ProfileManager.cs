@@ -119,7 +119,7 @@ public class ProfileManager : MonoBehaviour
         GameObject.Find("coins_counter").GetComponent<Text>().text = mProfile.GetCoins().ToString();
         
         var rectTrans = GameObject.Find("coins_counter").GetComponent<RectTransform>();
-        rectTrans.sizeDelta = new Vector2(150, rectTrans.sigitzeDelta.y);
+        rectTrans.sizeDelta = new Vector2(150, rectTrans.sizeDelta.y);
     }
     
     public void SetRecordCounterUI()
