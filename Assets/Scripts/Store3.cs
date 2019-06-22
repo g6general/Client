@@ -7,7 +7,7 @@ public class Store3 : MonoBehaviour
     private void OnMouseUp()
     {
         const double price = 0.75;
-        const int value = 1000;
+        const int value = 700;
 
         var main = GameObject.Find("Main Camera");
         if (main.GetComponent<PayInStore>().SendMoneyToStore(price))
