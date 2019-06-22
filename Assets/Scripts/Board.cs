@@ -5,6 +5,7 @@ using UnityEngine;
 using Match3Engine;
 using UnityEditor;
 using UnityEngine.UI;
+using Random = System.Random;
 
 public class Board : MonoBehaviour
 {
@@ -64,11 +65,16 @@ public class Board : MonoBehaviour
     private void StartMatch3()
     {
         mEngine.StartGame(0);
-        var info = mEngine.GetLevelInfo(0);
+        mNumberOfLevels = mEngine.GetNumberOfLevels();
         
+        var rand = new Random();
+        mCurrentLevel = rand.Next(0, mNumberOfLevels);
+
+        mEngine.RestartGame(mCurrentLevel);
+        var info = mEngine.GetLevelInfo(mCurrentLevel);
         mStepsCounter = info.steps;
         mLevelsCounter = 1;
-        mNumberOfLevels = mEngine.GetNumberOfLevels();
+        
 
         GameObject.Find("steps_counter").GetComponent<Text>().text = mStepsCounter.ToString();
         GameObject.Find("level_counter").GetComponent<Text>().text = mLevelsCounter.ToString();

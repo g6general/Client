@@ -236,7 +236,7 @@ namespace Match3Engine
         
         public void ShuffleFigures(List<M3Position> exceptPos = null)
         {
-            Random rand = new Random();
+            var rand = new Random();
             
             for (var y = 0; y < mBoard.Height(); ++y)
             {
