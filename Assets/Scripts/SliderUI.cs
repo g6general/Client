@@ -44,7 +44,7 @@ public class SliderUI : MonoBehaviour
             mMusicOff.SetActive(false);
         }
 
-        GameObject.Find("Main Camera").GetComponent<GameData>().SetMusicVolume(slider);
+        GameObject.Find("Main Camera").GetComponent<Sounds>().SetMusicVolume(slider);
     }
     
     public void OnSoundValueChange(float slider)
@@ -60,7 +60,7 @@ public class SliderUI : MonoBehaviour
             mSoundOff.SetActive(false);
         }
         
-        GameObject.Find("Main Camera").GetComponent<GameData>().SetSoundVolume(slider);
+        GameObject.Find("Main Camera").GetComponent<Sounds>().SetSoundVolume(slider);
     }
 
     public void OnLanguageChange()

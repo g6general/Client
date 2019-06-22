@@ -87,6 +87,10 @@ public class GameData : MonoBehaviour
         {
             mSettings = new Settings();
         }
+
+        var scriptObjectSounds = GameObject.Find("Main Camera").GetComponent<Sounds>();
+        scriptObjectSounds.SetMusicVolume(mSettings.GetMusicVolume(), true);
+        scriptObjectSounds.SetSoundVolume(mSettings.GetSoundVolume(), true);
     }
 
     private void UnloadSettings()

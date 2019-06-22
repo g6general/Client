@@ -135,6 +135,8 @@ public class Dot : MonoBehaviour
 
                 mBoard.mEngine.Move(firstPos, secondPos);
                 mBoard.ResetFirstTouch();
+
+                GameObject.Find("Main Camera").GetComponent<Sounds>().PlaySound();
             }
             else
             {
