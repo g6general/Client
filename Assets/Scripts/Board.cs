@@ -83,10 +83,12 @@ public class Board : MonoBehaviour
     {
         mWidth = 7;
         mHeight = 7;
+
         mCurrentLevel = 0;
         mNumberOfLevels = 0;
         mStepsCounter = 0;
         mLevelsCounter = 0;
+
         mFigures = new GameObject[mWidth, mHeight];
         mFrames = new List<Frame>();
         mGameCompleted = false;

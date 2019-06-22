@@ -124,10 +124,12 @@ public class ProfileManager : MonoBehaviour
         var record = mProfile.GetRecord().ToString();
         
         GameObject.Find("record_counter").GetComponent<Text>().text = record;
-        var rectTrans = GameObject.Find("record_counter").GetComponent<RectTransform>();
-        rectTrans.sizeDelta = new Vector2(120, rectTrans.sizeDelta.y);
+        var rectTrans1 = GameObject.Find("record_counter").GetComponent<RectTransform>();
+        rectTrans1.sizeDelta = new Vector2(120, rectTrans1.sizeDelta.y);
         
         GameObject.Find("top_record_text_you").GetComponent<Text>().text = record;
+        var rectTrans2 = GameObject.Find("top_record_text_you").GetComponent<RectTransform>();
+        rectTrans2.sizeDelta = new Vector2(120, rectTrans2.sizeDelta.y);
     }
 
     public void SetNicknameUI()
