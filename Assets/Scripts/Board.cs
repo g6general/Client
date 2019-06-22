@@ -181,17 +181,17 @@ public class Board : MonoBehaviour
     
     public void OnBuy1Bsm()
     {
-        BuyStepsBsm(10, 25);
+        BuyStepsBsm(5, 100);
     }
 
     public void OnBuy2Bsm()
     {
-        BuyStepsBsm(20, 50);
+        BuyStepsBsm(10, 200);
     }
     
     public void OnBuy3Bsm()
     {
-        BuyStepsBsm(30, 75);
+        BuyStepsBsm(15, 300);
     }
 
     public bool IsGameCompleted() { return mGameCompleted; }

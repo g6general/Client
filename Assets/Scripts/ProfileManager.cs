@@ -117,6 +117,9 @@ public class ProfileManager : MonoBehaviour
     public void SetCoinsCounterUI()
     {
         GameObject.Find("coins_counter").GetComponent<Text>().text = mProfile.GetCoins().ToString();
+        
+        var rectTrans = GameObject.Find("coins_counter").GetComponent<RectTransform>();
+        rectTrans.sizeDelta = new Vector2(150, rectTrans.sigitzeDelta.y);
     }
     
     public void SetRecordCounterUI()
@@ -144,7 +147,7 @@ public class ProfileManager : MonoBehaviour
 [DataContract] public class Profile
 {
     [DataMember] private string mNickname = "Player";
-    [DataMember] private string mCoins = "0";
+    [DataMember] private string mCoins = "150";
     [DataMember] private string mRecord = "0";
     [DataMember] private string mGameVersion = "0.0.0";
 

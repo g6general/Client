@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <board>
-	<level number="0" steps="10" coins="25">
+	<level number="0" steps="10" coins="20">
 		<position x="3" y="1" type="frame"/>
 		<position x="3" y="2" type="frame"/>
 		<position x="3" y="3" type="chain"/>
@@ -11,7 +11,7 @@
 		<position x="4" y="3" type="frame"/>
 		<position x="5" y="3" type="frame"/>
 	</level>
-	<level number="1" steps="15" coins="25">
+	<level number="1" steps="15" coins="30">
 		<position x="1" y="1" type="frame"/>
 		<position x="2" y="2" type="frame"/>
 		<position x="3" y="3" type="chain"/>
@@ -22,7 +22,7 @@
 		<position x="2" y="4" type="frame"/>
 		<position x="4" y="2" type="frame"/>
 	</level>
-	<level number="2" steps="18" coins="25">
+	<level number="2" steps="18" coins="35">
 		<position x="2" y="1" type="frame"/>
 		<position x="6" y="2" type="frame"/>
 		<position x="5" y="3" type="chain"/>
@@ -35,7 +35,7 @@
 		<position x="4" y="2" type="chain"/>
 		<position x="1" y="4" type="frame"/>
 	</level>
-	<level number="3" steps="10" coins="25">
+	<level number="3" steps="10" coins="18">
 		<position x="0" y="3" type="frame"/>
 		<position x="1" y="3" type="frame"/>
 		<position x="5" y="3" type="frame"/>
@@ -45,7 +45,7 @@
 		<position x="3" y="5" type="frame"/>
 		<position x="3" y="6" type="frame"/>
 	</level>
-	<level number="4" steps="10" coins="25">
+	<level number="4" steps="10" coins="18">
 		<position x="2" y="2" type="frame"/>
 		<position x="2" y="4" type="frame"/>
 		<position x="4" y="2" type="frame"/>
@@ -55,7 +55,7 @@
 		<position x="3" y="4" type="frame"/>
 		<position x="4" y="3" type="frame"/>
 	</level>
-	<level number="5" steps="25" coins="25">
+	<level number="5" steps="25" coins="50">
 		<position x="1" y="1" type="frame"/>
 		<position x="2" y="2" type="chain"/>
 		<position x="2" y="1" type="frame"/>
@@ -73,7 +73,7 @@
 		<position x="4" y="5" type="frame"/>
 		<position x="5" y="4" type="frame"/>
 	</level>
-	<level number="6" steps="18" coins="25">
+	<level number="6" steps="18" coins="35">
 		<position x="0" y="0" type="frame"/>
 		<position x="0" y="1" type="frame"/>
 		<position x="1" y="0" type="frame"/>
@@ -87,7 +87,7 @@
 		<position x="6" y="1" type="frame"/>
 		<position x="5" y="0" type="frame"/>
 	</level>
-	<level number="7" steps="25" coins="25">
+	<level number="7" steps="25" coins="55">
 		<position x="1" y="1" type="frame"/>
 		<position x="1" y="2" type="frame"/>
 		<position x="1" y="3" type="frame"/>
@@ -114,24 +114,24 @@
 		<position x="5" y="4" type="frame"/>
 		<position x="5" y="5" type="frame"/>
 	</level>
-	<level number="8" steps="5" coins="25">
+	<level number="8" steps="5" coins="10">
 		<position x="3" y="3" type="chain"/>
 	</level>
-	<level number="9" steps="10" coins="25">
+	<level number="9" steps="10" coins="20">
 		<position x="1" y="5" type="chain"/>
 		<position x="2" y="4" type="frame"/>
 		<position x="3" y="3" type="chain"/>
 		<position x="4" y="2" type="frame"/>
 		<position x="5" y="1" type="chain"/>
 	</level>
-	<level number="10" steps="10" coins="25">
+	<level number="10" steps="10" coins="22">
 		<position x="1" y="1" type="chain"/>
 		<position x="2" y="2" type="frame"/>
 		<position x="3" y="3" type="chain"/>
 		<position x="4" y="4" type="frame"/>
 		<position x="5" y="5" type="chain"/>
 	</level>
-	<level number="11" steps="14" coins="25">
+	<level number="11" steps="14" coins="35">
 		<position x="1" y="1" type="chain"/>
 		<position x="1" y="5" type="chain"/>
 		<position x="5" y="1" type="chain"/>
@@ -149,7 +149,7 @@
 		<position x="3" y="3" type="chain"/>
 		<position x="4" y="3" type="chain"/>
 	</level>
-	<level number="13" steps="15" coins="25">
+	<level number="13" steps="15" coins="30">
 		<position x="2" y="5" type="chain"/>
 		<position x="3" y="5" type="frame"/>
 		<position x="4" y="5" type="chain"/>
@@ -157,14 +157,14 @@
 		<position x="3" y="1" type="frame"/>
 		<position x="4" y="1" type="chain"/>
 	</level>
-	<level number="14" steps="14" coins="25">
+	<level number="14" steps="14" coins="30">
 		<position x="1" y="5" type="chain"/>
 		<position x="2" y="5" type="frame"/>
 		<position x="3" y="5" type="chain"/>
 		<position x="4" y="5" type="frame"/>
 		<position x="5" y="5" type="chain"/>
 	</level>
-	<level number="15" steps="20" coins="25">
+	<level number="15" steps="20" coins="40">
 		<position x="2" y="2" type="frame"/>
 		<position x="2" y="3" type="chain"/>
 		<position x="2" y="4" type="frame"/>
