@@ -9,4 +9,7 @@
 	<steps_counter value="Шаги" />
 	<level_counter value="Уровень" />
 	<record_counter value="Рекорд" />
+	<ingame_purchase_button_1 value="+5 шагов" />
+	<ingame_purchase_button_2 value="+10 шагов" />
+	<ingame_purchase_button_3 value="+15 шагов" />
 </texts>

@@ -74,7 +74,6 @@ public class Board : MonoBehaviour
         var info = mEngine.GetLevelInfo(mCurrentLevel);
         mStepsCounter = info.steps;
         mLevelsCounter = 1;
-        
 
         GameObject.Find("steps_counter").GetComponent<Text>().text = mStepsCounter.ToString();
         GameObject.Find("level_counter").GetComponent<Text>().text = mLevelsCounter.ToString();
@@ -146,6 +145,15 @@ public class Board : MonoBehaviour
         {
             Debug.Log("Game over!");
             mBuyStepsMenu.SetActive(true);
+
+            var buttonText1 = GameObject.Find("button_buy_1").GetComponentInChildren<Text>();
+            var buttonText2 = GameObject.Find("button_buy_2").GetComponentInChildren<Text>();
+            var buttonText3 = GameObject.Find("button_buy_3").GetComponentInChildren<Text>();
+            
+            var gameData = GameObject.Find("Main Camera").GetComponent<GameData>();
+            buttonText1.text = gameData.GetString("ingame_purchase_button_1");
+            buttonText2.text = gameData.GetString("ingame_purchase_button_2");
+            buttonText3.text = gameData.GetString("ingame_purchase_button_3");
         }
     }
 

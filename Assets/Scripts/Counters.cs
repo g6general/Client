@@ -14,6 +14,6 @@ public class Counters : MonoBehaviour
         GameObject.Find("record_text").GetComponent<Text>().text = gameData.GetString("record_counter");
 
         var textTransform = GameObject.Find("level_text").GetComponent<Text>().rectTransform;
-        textTransform.sizeDelta = new Vector2(220f, textTransform.sizeDelta.y);
+        textTransform.sizeDelta = new Vector2(270f, textTransform.sizeDelta.y);
     }
 }

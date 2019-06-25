@@ -145,7 +145,7 @@ public class TextPositions : MonoBehaviour
         
         
         //Counters
-        var cCoefX1 = 0.24f;
+        var cCoefX1 = 0.2f;
         var cCoefX2 = 0.5f;
         var cCoefX3 = 0.78f;
         var cCoefY1 = 0.0f;

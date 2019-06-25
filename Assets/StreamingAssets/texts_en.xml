@@ -9,4 +9,7 @@
 	<steps_counter value="Steps" />
 	<level_counter value="Level" />
 	<record_counter value="Record" />
+	<ingame_purchase_button_1 value="+5 steps" />
+	<ingame_purchase_button_2 value="+10 steps" />
+	<ingame_purchase_button_3 value="+15 steps" />
 </texts>
