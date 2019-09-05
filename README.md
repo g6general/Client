@@ -1,3 +1,3 @@
 # Match3
 First complete game
-![](screens/1)
+![](Screens/1.png)
